@@ -5,7 +5,6 @@
     "axios": "^0.18.0",
     "eslint-config-rallycoding": "^3.2.0",
     "expo": "^25.0.0",
-    "latlng-to-zip": "^0.0.1",
     "lodash": "^4.17.5",
     "qs": "^6.5.1",
     "react": "16.2.0",
@@ -14,6 +13,7 @@
     "react-navigation": "^1.1.2",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0"
   }
 }

@@ -28,7 +28,12 @@ class MapScreen extends Component {
   }
 
   onButtonPress = () => {
-    store.dispatch({ type: FETCH_JOBS, region: this.state.region });
+    store.dispatch({
+      type: FETCH_JOBS,
+      region: this.state.region,
+      // pass the callback for navigation!!
+      callback: () => this.props.navigation.navigate('deck'),
+    });
   }
 
   render() {

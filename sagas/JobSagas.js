@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { takeEvery, put, call } from 'redux-saga/effects';
-import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
+import reverseGeocode from '../utils/latLngToZip';
 
 import {
   FETCH_JOBS,
@@ -9,7 +9,7 @@ import {
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
-const JOB_QUERY_PARMAS = {
+const JOB_QUERY_PARAMS = {
   publisher: '4201738803816157',
   format: 'json',
   v: '2',
@@ -19,7 +19,7 @@ const JOB_QUERY_PARMAS = {
 };
 
 const buildJobsUrl = (zip) => {
-  const query = qs.stringify({ ...JOB_QUERY_PARMAS, l: zip });
+  const query = qs.stringify({ ...JOB_QUERY_PARAMS, l: zip });
   return `${JOB_ROOT_URL}${query}`;
 };
 
@@ -31,7 +31,7 @@ function* fetchJobs(action) {
     const url = buildJobsUrl(zip);
     let { data } = yield call(axios.get, url);
     yield put({ type: FETCH_JOBS_SUCCESS, payload: data });
-    console.log(data);
+    yield call(action.callback);
   } catch (e) {
     console.error(e);
   }
