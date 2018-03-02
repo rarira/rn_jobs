@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import store from '../store';
 
 import { FETCH_JOBS } from '../sagas/types';
 
 class MapScreen extends Component {
+  static navigationOptions = {
+    title: 'Map',
+    tabBarIcon: ({ tintColor }) => <Icon name='my-location' size={30} color={tintColor} />,
+  };
+
   state = {
     mapLoaded: false,
     region: {
@@ -48,7 +53,7 @@ class MapScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <MapView
-          style={{ flex: 1 }}
+          style={{ ...StyleSheet.absoluteFillObject, }}
           region={this.state.region}
           onRegionChangeComplete={this.onRegionChangeComplete}
         />

@@ -6,6 +6,10 @@ import reverseGeocode from '../utils/latLngToZip';
 import {
   FETCH_JOBS,
   FETCH_JOBS_SUCCESS,
+  SWIPE_RIGHT,
+  LIKE_JOB,
+  CLEAR_LIKED,
+  CLEAR_LIKED_JOBS,
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -37,6 +41,18 @@ function* fetchJobs(action) {
   }
 }
 
+function* likeJob(action) {
+  console.log('likeJob() called');
+  yield put({ type: LIKE_JOB, payload: action.job });
+}
+
+function* clearLikedJobs() {
+  console.log('clearLikedJob() called');
+  yield put({ type: CLEAR_LIKED_JOBS });
+}
+
 export const jobSagas = [
   takeEvery(FETCH_JOBS, fetchJobs),
+  takeEvery(SWIPE_RIGHT, likeJob),
+  takeEvery(CLEAR_LIKED, clearLikedJobs),
 ];

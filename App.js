@@ -29,12 +29,17 @@ export default class App extends React.Component {
             screen: StackNavigator({
               review: { screen: ReviewScreen },
               settings: { screen: SettingsScreen },
+            }, {
+              initialRouteName: 'review',
             })
           }
-
         },
         {
           tabBarPosition: 'bottom',
+          swipeEnabled: false,
+          tabBarOptions: {
+            labelStyle: { fontSize: 12 },
+          },
         })
       },
     },
@@ -42,7 +47,6 @@ export default class App extends React.Component {
       navigationOptions: {
         tabBarVisible: false,
       },
-      tabBarPosition: 'bottom',
     }
   );
 
