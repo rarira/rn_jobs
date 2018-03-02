@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add
+  /usr/local/bin/node /usr/local/bin/yarn add redux-persis
 
 PATH: 
   /Users/rarira/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/rarira/Library/Android/sdk/tools:/Users/rarira/Library/Android/sdk/platform-tools
@@ -21,7 +21,6 @@ npm manifest:
       "axios": "^0.18.0",
       "eslint-config-rallycoding": "^3.2.0",
       "expo": "^25.0.0",
-      "latlng-to-zip": "^0.0.1",
       "lodash": "^4.17.5",
       "qs": "^6.5.1",
       "react": "16.2.0",
@@ -30,6 +29,7 @@ npm manifest:
       "react-navigation": "^1.1.2",
       "react-redux": "^5.0.7",
       "redux": "^3.7.2",
+      "redux-logger": "^3.0.6",
       "redux-saga": "^0.16.0"
     }
   }
@@ -269,12 +269,6 @@ Lockfile:
   aws4@^1.2.1, aws4@^1.6.0:
     version "1.6.0"
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
-  
-  axios@^0.15.3:
-    version "0.15.3"
-    resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
-    dependencies:
-      follow-redirects "1.0.0"
   
   axios@^0.18.0:
     version "0.18.0"
@@ -1416,6 +1410,10 @@ Lockfile:
     version "0.6.0"
     resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
   
+  deep-diff@^0.3.5:
+    version "0.3.8"
+    resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+  
   deep-extend@~0.4.0:
     version "0.4.2"
     resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
@@ -2049,12 +2047,6 @@ Lockfile:
       del "^2.0.2"
       graceful-fs "^4.1.2"
       write "^0.2.1"
-  
-  follow-redirects@1.0.0:
-    version "1.0.0"
-    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
-    dependencies:
-      debug "^2.2.0"
   
   follow-redirects@^1.3.0:
     version "1.4.1"
@@ -2807,12 +2799,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
     optionalDependencies:
       graceful-fs "^4.1.9"
-  
-  latlng-to-zip@^0.0.1:
-    version "0.0.1"
-    resolved "https://registry.yarnpkg.com/latlng-to-zip/-/latlng-to-zip-0.0.1.tgz#2cac49c918806364332024e98b3b87a6b5546f23"
-    dependencies:
-      axios "^0.15.3"
   
   lcid@^1.0.0:
     version "1.0.0"
@@ -4001,6 +3987,12 @@ Lockfile:
     dependencies:
       resolve "^1.1.6"
   
+  redux-logger@^3.0.6:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+    dependencies:
+      deep-diff "^0.3.5"
+  
   redux-saga@^0.16.0:
     version "0.16.0"
     resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.0.tgz#0a231db0a1489301dd980f6f2f88d8ced418f724"
@@ -4940,14 +4932,11 @@ Lockfile:
       yargs-parser "^7.0.0"
 
 Trace: 
-  Error: Missing list of packages to add to your project.
+  Error: Couldn't find package "redux-persis" on the "npm" registry.
       at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:39365:13)
+      at NpmResolver.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:50354:15)
       at Generator.next (<anonymous>)
       at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (/usr/local/lib/node_modules/yarn/lib/cli.js:23457:28)
-      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:95:12)
-      at Object.run (/usr/local/lib/node_modules/yarn/lib/cli.js:39377:18)
-      at run (/usr/local/lib/node_modules/yarn/lib/cli.js:88588:20)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)

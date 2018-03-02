@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Icon } from 'react-native-elements';
-import store from '../store';
+import { store } from '../store';
 
 import { CLEAR_LIKED } from '../sagas/types';
 

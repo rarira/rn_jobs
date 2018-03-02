@@ -3,7 +3,7 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
 import { Button, Icon } from 'react-native-elements';
-import store from '../store';
+import { store } from '../store';
 
 import { FETCH_JOBS } from '../sagas/types';
 

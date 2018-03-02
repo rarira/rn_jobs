@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { MapView } from 'expo';
 import { Card, Button, Icon } from 'react-native-elements';
 
-import store from '../store';
+import { store } from '../store';
 import Swipe from '../components/Swipe';
 import {
   SWIPE_RIGHT,

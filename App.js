@@ -3,8 +3,9 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { store, sagaMiddleware, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react'
 
-import store, { sagaMiddleware } from './store';
 import Sagas from './sagas';
 
 import AuthScreen from './screens/AuthScreen';
@@ -17,6 +18,7 @@ import ReviewScreen from './screens/ReviewScreen';
 sagaMiddleware.run(Sagas);
 
 export default class App extends React.Component {
+
   render() {
     const MainNavigator = TabNavigator({
       welcome: { screen: WelcomeScreen },
@@ -52,9 +54,11 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <MainNavigator />
-        </View>
+        <PersistGate loading={null} persistor={persistor}>
+          <View style={styles.container}>
+            <MainNavigator />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
