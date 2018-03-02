@@ -25,7 +25,6 @@ function* doFacebookLogin() {
   }
 }
 
-// Our worker Saga: will perform the async increment task
 function* facebookLogin() {
   console.log('facebookLogin() called');
   const token = yield call(AsyncStorage.getItem, 'fb_token');
