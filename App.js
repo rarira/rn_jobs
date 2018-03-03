@@ -1,10 +1,12 @@
-import Expo from 'expo';
+import Expo, { Notifications } from 'expo';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { store, sagaMiddleware, persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react'
+
+import registerForNotifications from './services/push_notifications';
 
 import Sagas from './sagas';
 
@@ -18,6 +20,20 @@ import ReviewScreen from './screens/ReviewScreen';
 sagaMiddleware.run(Sagas);
 
 export default class App extends React.Component {
+  componentDidMount() {
+    registerForNotifications();
+    Notifications.addListener((notification) => {
+      const { data: { text }, origin } = notification;
+
+      if (origin === 'received' && text) {
+        Alert.alert(
+          'New Push Notification',
+          text,
+          [{ text: 'OK.' }]
+        );
+      }
+    });
+  }
 
   render() {
     const MainNavigator = TabNavigator({
